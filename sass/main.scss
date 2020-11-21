@@ -1,0 +1,332 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;500;600;700;800;900&display=swap");
+
+//Fonts
+$font-01: "Muli", sans-serif;
+
+$m-01: #698ccd;
+$m-02: #7dc4e0;
+
+$neu-01: #f7f8fc;
+$neu-02: #f1f5f8;
+$neu-03: #ecedee;
+$neu-04: #e0e0e2;
+$neu-05: #cecfd2;
+$neu-06: #b4b4ba;
+$neu-07: #7f8088;
+$neu-08: #5c5c66;
+$neu-09: #363842;
+
+$g-01: linear-gradient(-90deg, $m-01, $m-02);
+
+@mixin xxl {
+    @media screen and (max-width: 1920px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media screen and (max-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media screen and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media screen and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media screen and (max-width: 799px) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media screen and (max-width: 511px) {
+        @content;
+    }
+}
+
+@mixin xxs {
+    @media screen and (max-width: 380px) {
+        @content;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: 0;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+body {
+    font-family: $font-01;
+    background-color: white;
+}
+
+section {
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 25px;
+        background-color: $m-01;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.contentProducts {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: $neu-01;
+
+    &__wrapper {
+        padding-left: 5%;
+        padding-right: 5%;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    &__heading {
+        text-align: center;
+        margin-bottom: 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include sm {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__title {
+        max-width: 720px;
+        font-size: 42px;
+        font-weight: 300;
+        line-height: 58px;
+        text-transform: uppercase;
+        color: $m-01;
+        letter-spacing: 1px;
+
+        @include sm {
+            font-size: 30px;
+            line-height: 46px;
+        }
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+
+        @include md {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include xxs {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__card {
+        padding: 10px;
+        background-color: white;
+        border-radius: 4px;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: $g-01;
+        }
+
+        &.anime {
+            animation: itemsFade 1s ease backwards;
+
+            @keyframes itemsFade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(160px);
+                }
+
+                20% {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        color: white;
+        background: $g-01;
+        padding: 0 10px;
+        border-radius: 2px;
+        line-height: 26px;
+        font-size: 14px;
+        text-transform: uppercase;
+        top: 5px;
+        left: 5px;
+    }
+
+    &__image {
+        height: 300px;
+        transition: all 0.4s ease;
+
+        @include xs {
+            height: 220px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__text {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        padding: 0 10px;
+        background-color: white;
+        width: 100%;
+    }
+
+    &__productTitle {
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 28px;
+        padding-top: 5px;
+    }
+
+    &__priceContainer {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    &__priceFinal {
+        margin-right: 10px;
+    }
+
+    &__priceOriginal {
+        color: $neu-08;
+        text-decoration: line-through;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    &__link {
+        color: $m-01;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 26px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            margin-right: 8px;
+
+            @include md {
+                display: none;
+            }
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__view {
+        height: 40px;
+        padding: 0 40px;
+        background: $g-01;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            box-shadow: 0px 10px 15px -8px rgba(105, 140, 205, 0.8);
+        }
+    }
+
+    .ctaContainer {
+        width: 100%;
+        text-align: center;
+
+        @include sm {
+            display: flex;
+            justify-content: center;
+        }
+
+        .cta {
+            transition: all 0.2s ease;
+            padding: 0 32px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: white;
+            background: $g-01;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                box-shadow: 0px 10px 15px -8px rgba(105, 140, 205, 0.8);
+            }
+        }
+    }
+}
